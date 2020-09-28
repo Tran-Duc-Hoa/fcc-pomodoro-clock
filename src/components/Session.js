@@ -9,7 +9,7 @@ function Session(props) {
     return (
         <section>
         <p id="session-label">Session Length</p>        
-        <p>{sessionLengthInMinute}</p>
+        <p id="session-length">{sessionLengthInMinute}</p>
         <button id="session-decrement" onClick={props.decrementSessionLengthByOneMinute}>-</button>
         <button id="session-increment" onClick={props.incrementSessionLengthByOneMinute}>+</button>
     </section>

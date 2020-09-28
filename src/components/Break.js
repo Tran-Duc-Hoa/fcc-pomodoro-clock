@@ -7,7 +7,7 @@ function Break(props) {
     return (
         <section>
         <p id="break-label">Break Length</p>        
-        <p>{breakLengthInMinute}</p>
+        <p id="break-length">{breakLengthInMinute}</p>
         <button id="break-decrement" onClick={props.decrementBreakLengthByOneMinute}>-</button>
         <button id="break-increment" onClick={props.incrementBreakLengthByOneMinute}>+</button>
     </section>
