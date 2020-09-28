@@ -1,29 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
 
 momentDurationFormatSetup(moment);
 
 function Timer({ sessionLength, breakLength }) {
-    const [timeLeft, setTimerLeft] = useState(sessionLength);
+    const [timeLeft, setTimeLeft] = useState(sessionLength);
+    // Change timerLeft whenever sessionLength changes
+    useEffect(() => {
+        setTimeLeft(sessionLength);
+    }, [sessionLength]);
 
-    const formattedTimeLeft = moment.duration(timeLeft, 's').format
+    const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss')
     
+    const handleStartStopClick = () => {
+        setInterval(() => {
+            // decrement timeLeft by one every second
+            setTimeLeft(prevTimeLeft => {
+                const newTimeLeft = prevTimeLeft - 1;
+                if (newTimeLeft >= 0) {
+                    return prevTimeLeft - 1;
+                }
+                return prevTimeLeft;
+
+            });
+        }, 1000);
+    };
+
     return (
         <section>
             {/*<h4>{isSession === true ? "Session" : "Break" }</h4> */}
-            <span></span>
-            <span></span>
-            <span>
-                {/* {timerSecond === 0 
-                    ? "00" 
-                    : timerSecond < 10 
-                    ? "0" + timerSecond            
-                    : timerSecond} */}
-                {timeLeft}
-            </span>
+            <span>{formattedTimeLeft}</span>
             <section>
-                <button>Play</button>
+                <button onClick={handleStartStopClick}>Play</button>
                 {/* <button onClick={stop}>Stop</button>
                 <button onClick={reset}>Reset</button> */}
             </section>
