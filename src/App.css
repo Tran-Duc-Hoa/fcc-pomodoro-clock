@@ -36,6 +36,10 @@
   }
 }
 
+#header-title {
+  margin-top: 0.75em;
+}
+
 #clock {
   background-color: #1e555c;
   height: 60vh;

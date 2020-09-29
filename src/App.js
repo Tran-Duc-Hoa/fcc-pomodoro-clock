@@ -111,32 +111,32 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Pomodoro Clock</p>
+        <p id="header-title">Pomodoro Clock</p>
       </header>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-md-3"></div>
-          <div id="clock" className="col-xs-6 col-md-6">
+          <div className="col-md-3">
+
+          </div>
+          <div id="clock" className="col-sm-12 col-md-6">
             <h1 id="main-title">25 + 5 Clock</h1>
             <div className="row">
-              <div className="col-md-6">
+              <div className="col-md-6 col-sm-6">
                 <Break
                   breakLength={breakLength}
                   decrementBreakLengthByOneMinute={decrementBreakLengthByOneMinute}
                   incrementBreakLengthByOneMinute={incrementBreakLengthByOneMinute}
                 />
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 col-sm-6">
                 <Session
                   sessionLength={sessionLength}
                   decrementSessionLengthByOneMinute={decrementSessionLengthByOneMinute}
                   incrementSessionLengthByOneMinute={incrementSessionLengthByOneMinute}
                 />
               </div>
-            </div>
-            <div className="row">
               <div className="col-md-3"></div>
-              <div id="timer-session" className="col-md-6">
+              <div id="timer-session" className="col-sm-12 col-md-6">
                 <Timer  
                   currentDurationType={currentDurationType}
                   sessionLength={sessionLength}
@@ -153,8 +153,8 @@ function App() {
                   />
                 </audio>
               </div>
-
             </div>
+            
           </div>
         </div>
       </div>
