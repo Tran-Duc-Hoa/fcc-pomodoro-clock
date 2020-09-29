@@ -50,4 +50,36 @@
 #timer-session {
   border-radius: 50px;
   border: 2px solid bisque;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#break .buttonUpDown, #session .buttonUpDown {
+  background-color: #1e555c;
+  border: none;
+  outline: none;
+  font-size: 2em;
+}
+
+#break p, #session p {
+  margin-bottom: 0px;
+  font-size: 1.5em;
+}
+
+#start_stop, #reset {
+  outline: none;
+  border: none;
+  font-size: 1.25em;
+  background-color: #1e555c;
+}
+
+#timer-label {
+  font-size: 2em;
+  margin-bottom: 0px;
+}
+
+#time-left {
+  font-size: 3em;
 }

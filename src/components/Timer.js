@@ -1,24 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlay, faStop, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
 momentDurationFormatSetup(moment);
 
-function Timer(props) {
+function Timer({
+    timeLeft,
+    isStarted,
+    currentDurationType,
+    handleStartStopClick,
+    handleResetButtonClick
+}) {
     // Change timerLeft whenever sessionLength changes
-    useEffect(() => {
-        props.setTimeLeft(props.sessionLength);
-    }, [props.sessionLength]);
 
-    const formattedTimeLeft = moment.duration(props.timeLeft, 's').format('mm:ss', { trim: false})
+    const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss', { trim: false})
 
     return (
-        <section>
-            <p id="timer-label">{props.currentDurationType}</p>
+        <div>
+            <p id="timer-label">{currentDurationType}</p>
             <span id="time-left">{formattedTimeLeft}</span>
-            <button id="start_stop" onClick={props.handleStartStopClick}>{props.isStarted ? 'Stop' : 'Start'}</button>
-            <button id="reset" onClick={props.handleResetButtonClick}>Reset</button>
-        </section>
+            <div>
+                <button id="start_stop" onClick={handleStartStopClick}>
+                    {isStarted 
+                        ? <FontAwesomeIcon icon={faStop} />
+                        : <FontAwesomeIcon icon={faPlay} />}
+                </button>
+                <button id="reset" onClick={handleResetButtonClick}>
+                    <FontAwesomeIcon icon={faSyncAlt} />
+                </button>
+            </div>
+        </div>
     );
 }
 
